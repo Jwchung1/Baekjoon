@@ -1,3 +1,6 @@
+// BFS를 이용한 그래프 탐색 문제
+// BFS는 다시 돌아왔을때 더 짧아지지 않는다!
+
 #include <iostream>
 #include <vector>
 #include <string>
