@@ -9,11 +9,6 @@ using namespace std;
 
 int N, r, c;
 
-void rec(int row, int column)
-{
-
-}
-
 int main()
 {
     cin >> N >> r >> c;

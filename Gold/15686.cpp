@@ -1,4 +1,4 @@
-// 브루트포스 조합도 짜야되면서, BFS로 탐색까지 해야했던 문제. 브루트포스 조합 짜는 틀을 외워놓자. MakeCombinations
+// 브루트포스 조합 짜는 틀을 외워놓자. MakeCombinations
 // BFS를 굳이 할 필요가 없다! 집 좌표들을 저장해놓고, 치킨집 좌표들이랑 빼봐서 가장 작은 값을 더하기만 하면된다!
 // 그냥 브루트포스 문제!
 
@@ -31,10 +31,6 @@ void PrintTownMap()
     }
 }
 
-void Calculate(set<int> s)
-{
-
-}
 void MakeCombinations(set<int> s, int find_start)
 {
     if(s.size() == M)
@@ -50,67 +46,6 @@ void MakeCombinations(set<int> s, int find_start)
             MakeCombinations(s, i+1); // i번째꺼 넣은 조합 찾기
             s.erase(i); // i번째꺼 안 넣은 조합 찾기
         }
-    }
-}
-
-int BFS()
-{
-    int sum = 0;
-    for(int i=0; i<N; i++)
-    {
-        for(int j=0; j<N; j++)
-        {
-            if(town_map[i][j] == 1)
-            {
-                // BFS
-                queue<pair<int,int>> q;
-                int visited[50][50] = {0,};
-                q.push({i,j});
-                while(!q.empty())
-                {
-                    pair<int,int> cur = q.front();
-                    q.pop();
-                    if(town_map[cur.first][cur.second] == 2)
-                    {
-                        sum += visited[cur.first][cur.second];
-                        break;
-                    }
-                    for(int i=0; i<4; i++)
-                    {
-                        pair<int,int> next = {cur.first + dir[i].first, cur.second + dir[i].second};
-                        if(IsValid(next) && visited[next.first][next.second] == 0)
-                        {
-                            visited[next.first][next.second] = visited[cur.first][cur.second] + 1;
-                            q.push(next);
-                        }
-                    }
-                }
-            }
-            
-        }
-    }
-}
-bool IsValid(pair<int,int> p)
-{
-    if(p.first < 0 || p.second < 0 || p.first >= N || p.second >= N) return false;
-    return true;
-}
-void PutChickenhouse(set<int> s)
-{
-    // s에 있는 치킨집 좌표들을 town_map에 표시함
-    for(const int& e : s)
-    {
-        pair<int,int> pos = chicken_house[e];
-        town_map[pos.first][pos.second] = 2;
-    }
-    // 치킨거리 구하기
-    min_result = min(min_result, BFS());
-
-    // s에 있는 치킨집 좌표들 지움
-    for(const int& e : s)
-    {
-        pair<int,int> pos = chicken_house[e];
-        town_map[pos.first][pos.second] = 0;
     }
 }
 
