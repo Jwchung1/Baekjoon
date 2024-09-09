@@ -58,8 +58,6 @@ int main()
 
     while(T--)
     {
-        // cout << T << ": before\n";
-        // debug();
         for(int i=0; i<R; i++)
         {
             for(int j=0; j<C; j++)
@@ -76,8 +74,6 @@ int main()
                 tmp[i][j] = 0;
             }
         }
-        // cout << T << ": after spread\n";
-        // debug();
         // 위쪽 바람 돌리기
         for(int i = airconTop-1; i>=0; i--)
         {
@@ -121,8 +117,6 @@ int main()
             room[airconBot][i+1] = room[airconBot][i];
             if(i==1) room[airconBot][i] = 0;
         }
-        // cout << T << ": after\n";
-        // debug();
     }
     int sum = 0;
     for(int i=0; i<R; i++)
